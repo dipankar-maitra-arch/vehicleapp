@@ -143,7 +143,9 @@ function App() {
         <Row>
           <Col xs={12} lg={{ offset: 3, span: 6 }}>
             <h6>Average Engine Efficiency</h6>
-            <GaugeChart style={chartStyle} />
+            <GaugeChart style={chartStyle} 
+            percent={engineLoad / 100}
+            />
           </Col>
         </Row>
         <Row>
@@ -153,7 +155,7 @@ function App() {
               nrOfLevels={30}
               colors={['#FF5F6D', '#FFC371']}
               arcWidth={0.3}
-              percent={engineLoad / 100}
+              percent={distanceWithMIL / 100}
             />
             <h6>Average Engine Load</h6>
           </Col>
@@ -189,7 +191,7 @@ function App() {
               colors={['#5BE12C', '#F5CD19', '#EA4228']}
               arcWidth={0.3}
               percent={EngineSpeed / 100}
-              formatTextValue={value => value + 'rpm'}
+              formatTextValue={value => value + '%rpm'}
              />
             <h6>Average Engine Speed</h6>
           </Col>
