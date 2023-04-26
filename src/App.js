@@ -26,8 +26,11 @@ function App() {
 
 
 
- const [distanceWithMIL, setDistanceWithMIL] = useState(30);
- const [engineLoad, setEngineLoad] = useState(50);
+ const [distanceWithMIL, setDistanceWithMIL] = useState(70);
+ const [engineLoad, setEngineLoad] = useState(60);
+ const [CoolantTemperature, setCoolantTemperature] = useState(30);
+ const [FuelPressure, setFuelPressure] = useState(60);
+ const [EngineSpeed, setEngineSpeed] = useState(60);
  const [isChartShow, setIsChartShow] = useState(false);
  const increment = useRef(null);
 
@@ -43,6 +46,9 @@ function App() {
    increment.current = setInterval(() => {
    setDistanceWithMIL(Math.floor(Math.random() * (70 - 35 + 1)) + 35)
    setEngineLoad(Math.floor(Math.random() * (70 - 35 + 1)) + 35)
+   setCoolantTemperature(Math.floor(Math.random() * (70 - 35 + 1)) + 35)
+   setFuelPressure(Math.floor(Math.random() * (70 - 35 + 1)) + 35)
+   setEngineSpeed(Math.floor(Math.random() * (70 - 35 + 1)) + 35)
    }, 3000)
  }
 
@@ -133,34 +139,63 @@ function App() {
       {isChartShow &&
       <div className="chartsContainer">
         <Container>
-          <CloseButton className="close" variant="white" onClick={closeChart}/>
-          <Row>
-            <Col xs={12} lg={6}>
-              {/* <h6>GaugeChart with default props</h6> */}
-              <h6>GaugeChart with Distance With MIL</h6>
-              <GaugeChart
-                id="gauge-chart1"
-                style={chartStyle}
-                // nrOfLevels={20}
-                percent={distanceWithMIL / 100}
-                needleColor="#345243"
-                fontSize="40px"
-              />
-            </Col>
-            <Col xs={12} lg={6}>
-              {/* <h6>GaugeChart with 20 levels</h6> */}
-              <h6>GaugeChart with EngineLoad</h6>
-              <GaugeChart
-                id="gauge-chart2"
-                style={chartStyle}
-                nrOfLevels={20}
-                percent={engineLoad / 100}
-                needleColor="#345243"
-                fontSize="40px"
-              />
-            </Col>
-          </Row>
-        </Container>
+        <CloseButton className="close" variant="white" onClick={closeChart}/>
+        <Row>
+          <Col xs={12} lg={{ offset: 3, span: 6 }}>
+            <h6>Average Engine Efficiency</h6>
+            <GaugeChart style={chartStyle} />
+          </Col>
+        </Row>
+        <Row>
+         <Col xs={12} lg={6}>
+            <GaugeChart
+							style={chartStyle}
+              nrOfLevels={30}
+              colors={['#FF5F6D', '#FFC371']}
+              arcWidth={0.3}
+              percent={distanceWithMIL / 100}
+            />
+            <h6>Average Engine Load</h6>
+          </Col>
+          <Col xs={12} lg={6}>
+            <GaugeChart
+							id="gauge-chart4"
+							style={chartStyle}
+							nrOfLevels={10}
+							arcPadding={0.1}
+							cornerRadius={3}
+							percent={engineLoad / 100}
+						/>
+            <h6>Average Fuel Pressure</h6>
+          </Col>
+          <Col xs={12} lg={6}>
+           
+            <GaugeChart
+              id="gauge-chart5"
+							style={chartStyle}
+              nrOfLevels={420}
+              arcsLength={[0.3, 0.5, 0.2]}
+              colors={['#5BE12C', '#F5CD19', '#EA4228']}
+              percent={0.37}
+              arcPadding={0.02}
+            />
+            <h6>Average Coolant Temparature</h6>
+          </Col>
+          <Col xs={12} lg={6}>
+            <GaugeChart
+              id="gauge-chart8"
+              style={chartStyle}
+              nrOfLevels={30}
+              colors={['#5BE12C', '#F5CD19', '#EA4228']}
+              arcWidth={0.3}
+              percent={0.70}
+              formatTextValue={value => value + 'rpm'}
+             />
+            <h6>Average Engine Speed</h6>
+          </Col>
+        </Row>
+			
+      </Container>
       </div>
       }
 
