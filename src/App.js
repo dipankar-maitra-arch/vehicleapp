@@ -153,7 +153,7 @@ function App() {
               nrOfLevels={30}
               colors={['#FF5F6D', '#FFC371']}
               arcWidth={0.3}
-              percent={distanceWithMIL / 100}
+              percent={engineLoad / 100}
             />
             <h6>Average Engine Load</h6>
           </Col>
@@ -164,7 +164,7 @@ function App() {
 							nrOfLevels={10}
 							arcPadding={0.1}
 							cornerRadius={3}
-							percent={engineLoad / 100}
+							percent={FuelPressure/ 100}
 						/>
             <h6>Average Fuel Pressure</h6>
           </Col>
@@ -176,7 +176,7 @@ function App() {
               nrOfLevels={420}
               arcsLength={[0.3, 0.5, 0.2]}
               colors={['#5BE12C', '#F5CD19', '#EA4228']}
-              percent={0.37}
+              percent={CoolantTemperature / 100}
               arcPadding={0.02}
             />
             <h6>Average Coolant Temparature</h6>
@@ -188,7 +188,7 @@ function App() {
               nrOfLevels={30}
               colors={['#5BE12C', '#F5CD19', '#EA4228']}
               arcWidth={0.3}
-              percent={0.70}
+              percent={EngineSpeed / 100}
               formatTextValue={value => value + 'rpm'}
              />
             <h6>Average Engine Speed</h6>
