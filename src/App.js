@@ -5,6 +5,7 @@ import GaugeChart from "react-gauge-chart";
 
 
 
+
 function App() {
  const chartStyle = {
     height: 250,
@@ -100,6 +101,7 @@ function App() {
                 </Card.Body>
               </Card>
             </Col>
+            
             <Col xs={12} lg={3}>
               <Card style={{ width: "18rem" }}>
                 <Card.Body>
@@ -195,7 +197,6 @@ function App() {
               <h6>Average Engine Speed</h6>
             </Col>
           </Row>
-			
         </Container>
       </div>
       }
